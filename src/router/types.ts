@@ -12,7 +12,7 @@ export type AuthScreenProps<ScreenName extends keyof AuthStackParamList> =
 export interface BottomTabBarStackParamList extends ParamListBase {
   Home: undefined;
   Category: undefined;
-  Wishlist: undefined;
+  WishList: undefined;
   Profile: undefined;
 }
 

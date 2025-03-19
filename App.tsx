@@ -1,9 +1,16 @@
 import { useFontLoading } from "@src/hooks/services";
-import { colors } from "@src/resources/colors/colors";
-import { fontFamily } from "@src/resources/fonts";
-import { StatusBar } from "expo-status-bar";
+import { Router } from "@src/router/router";
+import { AppLoader } from "@src/screens/App-Loader";
 import { useEffect } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  View,
+  StatusBar as RNStatusBar,
+} from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { colors } from "@src/resources/colors/colors";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const { isLoadingFontComplete, loadResourcesAndDataAsync } = useFontLoading();
@@ -16,19 +23,17 @@ export default function App() {
   }, []);
   return (
     <View style={styles.container}>
-      {!isLoadingFontComplete ? (
-        <ActivityIndicator size={"large"} color={colors.red} />
+      {Platform.OS === "ios" ? (
+        <RNStatusBar backgroundColor={"#052C22"} />
       ) : (
-        <>
-          <Text
-            style={{
-              fontFamily: fontFamily.bold,
-            }}>
-            Open up App.tsx to start working on your app!
-          </Text>
-          <StatusBar style='auto' />
-        </>
+        <StatusBar
+          style='dark'
+          backgroundColor={isLoadingFontComplete ? colors.white : colors.red}
+        />
       )}
+      <SafeAreaProvider>
+        {!isLoadingFontComplete ? <AppLoader /> : <Router />}
+      </SafeAreaProvider>
     </View>
   );
 }
@@ -36,8 +41,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
