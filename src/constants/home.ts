@@ -1,3 +1,4 @@
+import { bottomTabScreenNames } from "@src/navigation";
 import { carsForSaleType } from "@src/types/types";
 
 export const carsForSale: carsForSaleType = [
@@ -162,5 +163,74 @@ export const carsForSale: carsForSaleType = [
     carType: "Automatic",
     image: require("@src/assets/png/car2.png"),
     location: "Molete, Ibadan",
+  },
+];
+
+export const homeHeader = [
+  {
+    name: "Home",
+    list: [
+      {
+        name: "Category Listing",
+        screen: "",
+      },
+    ],
+  },
+  {
+    name: "Services",
+    list: [
+      {
+        name: "Car Sales (Tokunbo and Naija Used)",
+        screen: "",
+      },
+      {
+        name: "Car Hire (Personal, Commercial, Logistics)",
+        screen: "",
+      },
+      {
+        name: "Spare Parts",
+        screen: "",
+      },
+      {
+        name: "Consultation Services",
+        screen: "",
+      },
+      {
+        name: "Dealers Deal",
+        screen: "",
+      },
+    ],
+  },
+  {
+    name: "Profile",
+    list: [
+      {
+        name: "Wishlist",
+        screen: "",
+      },
+      {
+        name: "Recently Viewed",
+        screen: "",
+      },
+    ],
+  },
+];
+
+export const otherService = [
+  {
+    list: "Car Hire",
+    screen: "",
+  },
+  {
+    list: "Spare Parts",
+    screen: "",
+  },
+  {
+    list: "Consultation Services",
+    screen: "",
+  },
+  {
+    list: "Dealers Deal",
+    screen: "",
   },
 ];

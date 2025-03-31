@@ -6,4 +6,5 @@ export enum colors {
   darkGray = "#1A2127B2",
   white = "#FFFFFF",
   cream = "#ECE6CB",
+  modalBg = "#00000067",
 }

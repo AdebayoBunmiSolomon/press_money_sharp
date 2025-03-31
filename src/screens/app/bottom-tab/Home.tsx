@@ -1,27 +1,35 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Header, ProductCard } from "@src/common";
 import { CustomButton, CustomInput, CustomText } from "@src/components/shared";
 import { carsForSale } from "@src/constants/home";
-import { bottomTabScreenNames } from "@src/navigation/navigation-names";
+import {
+  appScreenNames,
+  bottomTabScreenNames,
+} from "@src/navigation/navigation-names";
 import { colors } from "@src/resources/colors/colors";
 import { DVH, DVW, moderateScale } from "@src/resources/scaling";
-import { BottomTabBarScreenProps } from "@src/router/types";
+import { BottomTabBarStackParamList } from "@src/router/types";
 import { ScrollContainer } from "@src/screens/Scroll-Container";
 import { StatusBar } from "expo-status-bar";
 import { ArrowRight } from "lucide-react-native";
 import React, { useRef, useState } from "react";
 import { StyleSheet, View, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-export const Home = ({
-  navigation,
-}: BottomTabBarScreenProps<bottomTabScreenNames.HOME>) => {
+export const Home = () => {
   const [search, setSearch] = useState<string>("");
   const scrollRef = useRef<ScrollView>(null); // Reference for ScrollView
+  const navigation: NavigationProp<BottomTabBarStackParamList> =
+    useNavigation();
   return (
     <>
       <StatusBar backgroundColor={colors.white} />
       <SafeAreaView style={styles.mainContainer}>
-        <Header onPressBackArrow={() => {}} />
+        <Header
+          onPressBackArrow={() => {}}
+          onPressHamBuggerBtn={() =>
+            navigation.navigate(appScreenNames.HOME_HEADER)
+          }
+        />
         <ScrollContainer
           ref={scrollRef}
           setScreenScroll={(index) => {}}
@@ -144,5 +152,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     gap: moderateScale(5),
+    paddingTop: moderateScale(5),
   },
 });

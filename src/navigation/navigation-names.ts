@@ -1,5 +1,6 @@
 export enum appScreenNames {
   BOTTOM_TAB = "BottomTab",
+  HOME_HEADER = "HomeHeader",
 }
 
 export enum bottomTabScreenNames {

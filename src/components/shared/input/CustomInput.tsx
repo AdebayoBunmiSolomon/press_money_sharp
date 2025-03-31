@@ -37,6 +37,7 @@ interface BaseProps {
   titleStyle?: StyleProp<TextStyle>;
   onSubmitEditing?: () => void;
   textInputStyle?: StyleProp<TextStyle>;
+  placeHolderColor?: ColorValue;
 }
 
 interface DropdownProps extends BaseProps {
@@ -76,6 +77,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
     titleStyle,
     onSubmitEditing,
     textInputStyle,
+    placeHolderColor,
   } = props;
 
   const [seePassword, setSeePassword] = useState(true);
@@ -123,7 +125,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
               },
               textInputStyle,
             ]}
-            placeholderTextColor={colors.gray}
+            placeholderTextColor={placeHolderColor || colors.gray}
             onChangeText={onChangeText}
           />
           <TouchableOpacity
@@ -203,7 +205,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
             textInputStyle,
           ]}
           secureTextEntry={seePassword}
-          placeholderTextColor={colors.gray}
+          placeholderTextColor={placeHolderColor || colors.gray}
         />
         <TouchableOpacity
           onPress={() => setSeePassword(!seePassword)}
@@ -259,7 +261,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
               textInputStyle,
             ]}
             keyboardType={keyboardType}
-            placeholderTextColor={colors.gray}
+            placeholderTextColor={placeHolderColor || colors.gray}
             maxLength={maxLength}
             editable={disabled ? false : true}
             multiline={multiLine}

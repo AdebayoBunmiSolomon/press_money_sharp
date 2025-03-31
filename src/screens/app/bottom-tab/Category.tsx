@@ -1,4 +1,5 @@
 import { Header, ProductCard } from "@src/common";
+import { Filter, OtherServices } from "@src/components/app/category";
 import { CustomButton } from "@src/components/shared";
 import { carsForSale } from "@src/constants/home";
 import { bottomTabScreenNames } from "@src/navigation/navigation-names";
@@ -12,9 +13,19 @@ import React, { useRef, useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+type actionBtnType = {
+  showFilter: boolean;
+  showOtherService: boolean;
+};
+
 export const Category = ({
   navigation,
 }: BottomTabBarScreenProps<bottomTabScreenNames.CATEGORY>) => {
+  const [visible, setVisible] = useState<boolean>(false);
+  const [onActionBtnClick, setOnActionBtnClick] = useState<actionBtnType>({
+    showFilter: false,
+    showOtherService: false,
+  });
   const [screenScroll, setScreenScroll] = useState<number>(0);
   const scrollRef = useRef<ScrollView>(null); // Reference for ScrollView
 
@@ -32,30 +43,59 @@ export const Category = ({
           showBackArrow
           title='Cars for Sales'
           textColor={colors.white}
+          onPressHamBuggerBtn={() => {}}
         />
         <View style={styles.actionBtnContainer}>
-          <CustomButton
-            title='Filters'
-            onPress={() => {}}
-            bgWhite
-            textBlack
-            textType='Medium'
-            buttonType='Outline'
-            rightIcon={<Funnel color={colors.black} size={moderateScale(15)} />}
-            style={styles.filterBtn}
-          />
-          <CustomButton
-            title='Other Services'
-            onPress={() => {}}
-            bgWhite
-            textWhite
-            textType='Medium'
-            buttonType='Solid'
-            rightIcon={
-              <ChevronsUpDown color={colors.white} size={moderateScale(20)} />
-            }
-            style={styles.otherServicesBtn}
-          />
+          <View
+            style={{
+              width: "48%",
+            }}>
+            <CustomButton
+              title='Filters'
+              onPress={() => {
+                setOnActionBtnClick({
+                  ...onActionBtnClick,
+                  showFilter: !onActionBtnClick.showFilter,
+                });
+                setVisible(!visible);
+              }}
+              bgWhite
+              textBlack
+              textType='Medium'
+              buttonType='Outline'
+              rightIcon={
+                <Funnel color={colors.black} size={moderateScale(15)} />
+              }
+              style={styles.filterBtn}
+            />
+            <Filter
+              visible={visible}
+              onCloseModal={() => setVisible(!visible)}
+            />
+          </View>
+          <View
+            style={{
+              width: "48%",
+            }}>
+            <CustomButton
+              title='Other Services'
+              onPress={() => {
+                setOnActionBtnClick({
+                  ...onActionBtnClick,
+                  showOtherService: !onActionBtnClick.showOtherService,
+                });
+              }}
+              bgWhite
+              textWhite
+              textType='Medium'
+              buttonType='Solid'
+              rightIcon={
+                <ChevronsUpDown color={colors.white} size={moderateScale(20)} />
+              }
+              style={styles.otherServicesBtn}
+            />
+            {onActionBtnClick.showOtherService && <OtherServices />}
+          </View>
         </View>
         <ScrollContainer
           ref={scrollRef} // Attach ref
@@ -96,11 +136,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(10),
     paddingVertical: moderateScale(10),
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "space-between",
   },
   filterBtn: {
-    width: "47%",
+    width: "100%",
     borderRadius: moderateScale(10),
     paddingVertical: moderateScale(7),
     justifyContent: "space-between",
@@ -108,7 +148,7 @@ const styles = StyleSheet.create({
     borderColor: colors.red,
   },
   otherServicesBtn: {
-    width: "47%",
+    width: "100%",
     borderRadius: moderateScale(10),
     paddingVertical: moderateScale(9),
     justifyContent: "space-between",

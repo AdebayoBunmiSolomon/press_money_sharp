@@ -19,6 +19,7 @@ interface IHeaderProps {
   textColor?: ColorValue;
   containerStyle?: StyleProp<ViewStyle>;
   onPressBackArrow: () => void;
+  onPressHamBuggerBtn: () => void;
 }
 
 export const Header: React.FC<IHeaderProps> = ({
@@ -27,6 +28,7 @@ export const Header: React.FC<IHeaderProps> = ({
   textColor,
   containerStyle,
   onPressBackArrow,
+  onPressHamBuggerBtn,
 }) => {
   return (
     <View style={[styles.topContainer, containerStyle]}>
@@ -58,7 +60,9 @@ export const Header: React.FC<IHeaderProps> = ({
           style={styles.appIcon}
         />
       )}
-      <TouchableOpacity style={styles.hamBuggerBtn}>
+      <TouchableOpacity
+        style={styles.hamBuggerBtn}
+        onPress={() => onPressHamBuggerBtn()}>
         <AlignJustify
           size={moderateScale(20)}
           color={textColor || colors.black}
