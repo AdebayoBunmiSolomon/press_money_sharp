@@ -34,7 +34,10 @@ export const Header: React.FC<IHeaderProps> = ({
         <TouchableOpacity
           onPress={() => onPressBackArrow()}
           style={styles.hamBuggerBtn}>
-          <ArrowLeft size={moderateScale(20)} color={colors.black} />
+          <ArrowLeft
+            size={moderateScale(20)}
+            color={textColor || colors.black}
+          />
         </TouchableOpacity>
       ) : (
         <View />
@@ -56,7 +59,10 @@ export const Header: React.FC<IHeaderProps> = ({
         />
       )}
       <TouchableOpacity style={styles.hamBuggerBtn}>
-        <AlignJustify size={moderateScale(20)} color={colors.black} />
+        <AlignJustify
+          size={moderateScale(20)}
+          color={textColor || colors.black}
+        />
       </TouchableOpacity>
     </View>
   );

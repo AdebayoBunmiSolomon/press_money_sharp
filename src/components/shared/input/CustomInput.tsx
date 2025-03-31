@@ -36,6 +36,7 @@ interface BaseProps {
   valueFontType?: textType;
   titleStyle?: StyleProp<TextStyle>;
   onSubmitEditing?: () => void;
+  textInputStyle?: StyleProp<TextStyle>;
 }
 
 interface DropdownProps extends BaseProps {
@@ -74,6 +75,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
     valueFontType,
     titleStyle,
     onSubmitEditing,
+    textInputStyle,
   } = props;
 
   const [seePassword, setSeePassword] = useState(true);
@@ -119,6 +121,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
                 height: "100%",
                 fontFamily: fontFamily,
               },
+              textInputStyle,
             ]}
             placeholderTextColor={colors.gray}
             onChangeText={onChangeText}
@@ -197,6 +200,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
               height: "100%",
               fontFamily: fontFamily,
             },
+            textInputStyle,
           ]}
           secureTextEntry={seePassword}
           placeholderTextColor={colors.gray}
@@ -252,6 +256,7 @@ export const CustomInput: React.FC<CustomInputProps> = (props) => {
                 textAlignVertical: multiLine ? "top" : "center",
                 fontFamily: fontFamily,
               },
+              textInputStyle,
             ]}
             keyboardType={keyboardType}
             placeholderTextColor={colors.gray}

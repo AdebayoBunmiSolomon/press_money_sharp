@@ -5,4 +5,5 @@ export enum colors {
   gray = "#F4F4F4",
   darkGray = "#1A2127B2",
   white = "#FFFFFF",
+  cream = "#ECE6CB",
 }
