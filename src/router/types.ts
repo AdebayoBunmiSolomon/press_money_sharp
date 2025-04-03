@@ -21,7 +21,12 @@ export type BottomTabBarScreenProps<
 > = BottomTabScreenProps<BottomTabBarStackParamList, ScreenName>;
 
 //native and app screen navigation
-export interface RootStackParamList extends ParamListBase {}
+export interface RootStackParamList extends ParamListBase {
+  ProductDetail: {
+    productTitle: string;
+    productId: number;
+  };
+}
 
 export type RootStackScreenProps<ScreenName extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, ScreenName>;

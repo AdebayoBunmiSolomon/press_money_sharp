@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator<BottomTabBarStackParamList>();
 
 export const BottomTabStack = () => {
   const returnBottomTabTextDesc = (desc: string) => {
-    if (desc.toLowerCase() === bottomTabScreenNames.HOME.toLowerCase()) {
+    if (desc.toLowerCase() === "HomeStack".toLowerCase()) {
       return "Home";
     } else if (
       desc.toLowerCase() === bottomTabScreenNames.CATEGORY.toLowerCase()
@@ -47,13 +47,13 @@ export const BottomTabStack = () => {
           </Text>
         ),
         tabBarIcon: ({ focused }) =>
-          focused && route.name === bottomTabScreenNames.HOME ? (
+          focused && route.name === "HomeStack" ? (
             <AntDesign
               name='home'
               size={moderateScale(20)}
               color={colors.red}
             />
-          ) : !focused && route.name === bottomTabScreenNames.HOME ? (
+          ) : !focused && route.name === "HomeStack" ? (
             <AntDesign
               name='home'
               size={moderateScale(20)}
@@ -89,7 +89,7 @@ export const BottomTabStack = () => {
             />
           ) : undefined,
       })}
-      initialRouteName={bottomTabScreenNames.HOME}>
+      initialRouteName={"HomeStack"}>
       {bottomTabScreens &&
         bottomTabScreens.map((screen, index) => (
           <Tab.Screen

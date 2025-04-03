@@ -50,6 +50,8 @@ export const Header: React.FC<IHeaderProps> = ({
           size={18}
           style={{
             color: textColor,
+            textAlign: "center",
+            maxWidth: DVW(40),
           }}>
           {title}
         </CustomText>

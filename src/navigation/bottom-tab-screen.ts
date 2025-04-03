@@ -5,7 +5,7 @@ import { HomeStack } from "@src/router/screen-stack";
 
 export const bottomTabScreens: bottomTabScreenTypes[] = [
   {
-    screenName: bottomTabScreenNames.HOME,
+    screenName: "HomeStack",
     component: HomeStack,
   },
   {

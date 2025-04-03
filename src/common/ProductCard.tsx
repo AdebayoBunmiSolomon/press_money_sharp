@@ -9,8 +9,8 @@ import { TouchableOpacity, View, Image, StyleSheet } from "react-native";
 
 interface IProductCardProps {
   data: carsForSaleType;
-  onPressItem: (itemId: number) => void;
-  onLikeItem: (itemId: number) => void;
+  onPressItem: (itemId: number, itemName: string) => void;
+  onLikeItem: (itemId: number, itemName: string) => void;
   showLocation?: boolean;
 }
 
@@ -27,7 +27,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           <TouchableOpacity
             key={index}
             style={styles.cardContainer}
-            onPress={() => onPressItem(item?.id)}>
+            onPress={() => onPressItem(item?.id, item?.name)}>
             <View style={styles.cardImgContainer}>
               <Image
                 source={item?.image}
@@ -74,7 +74,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 </View>
                 <TouchableOpacity
                   style={{ padding: moderateScale(5) }}
-                  onPress={() => onLikeItem(item?.id)}>
+                  onPress={() => onLikeItem(item?.id, item?.name)}>
                   <Heart
                     color={colors.red}
                     size={moderateScale(20)}

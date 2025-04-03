@@ -28,4 +28,30 @@ export type carsForSaleType = {
   carType: string;
   image: ImageSourcePropType;
   location: string;
+  year: string;
+  make: string;
+  model: string;
+  millage: string;
+  trim: string;
+  condition: string;
+  color: string;
+  interior: string;
+}[];
+
+export type sparePartsSaleType = {
+  id: number;
+  name: string;
+  price: number;
+  usedType: string;
+  carType: string;
+  image: ImageSourcePropType;
+  location: string;
+  // year: string;
+  // make: string;
+  // model: string;
+  // millage: string;
+  // trim: string;
+  // condition: string;
+  // color: string;
+  // interior: string;
 }[];

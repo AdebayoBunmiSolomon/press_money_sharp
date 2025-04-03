@@ -1,11 +1,15 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Header, ProductCard } from "@src/common";
 import { Filter, OtherServices } from "@src/components/app/category";
 import { CustomButton } from "@src/components/shared";
 import { carsForSale } from "@src/constants/home";
-import { bottomTabScreenNames } from "@src/navigation/navigation-names";
+import {
+  appScreenNames,
+  bottomTabScreenNames,
+} from "@src/navigation/navigation-names";
 import { colors } from "@src/resources/colors/colors";
 import { DVH, moderateScale } from "@src/resources/scaling";
-import { BottomTabBarScreenProps } from "@src/router/types";
+import { BottomTabBarScreenProps, RootStackParamList } from "@src/router/types";
 import { ScrollContainer } from "@src/screens/Scroll-Container";
 import { StatusBar } from "expo-status-bar";
 import { ArrowUp, ChevronsUpDown, Funnel } from "lucide-react-native";
@@ -21,6 +25,8 @@ type actionBtnType = {
 export const Category = ({
   navigation,
 }: BottomTabBarScreenProps<bottomTabScreenNames.CATEGORY>) => {
+  const rootScreenNavigation: NavigationProp<RootStackParamList> =
+    useNavigation();
   const [visible, setVisible] = useState<boolean>(false);
   const [onActionBtnClick, setOnActionBtnClick] = useState<actionBtnType>({
     showFilter: false,
@@ -104,8 +110,14 @@ export const Category = ({
           <View style={styles.prodItemContainer}>
             <ProductCard
               data={carsForSale}
-              onLikeItem={(itemId) => {}}
-              onPressItem={(itemId) => {}}
+              onLikeItem={(_, __) => {}}
+              onPressItem={(itemId, itemName) => {
+                console.log(itemId, itemName);
+                rootScreenNavigation.navigate(appScreenNames.PRODUCT_DETAIL, {
+                  productTitle: itemName,
+                  productId: itemId,
+                });
+              }}
               showLocation
             />
           </View>

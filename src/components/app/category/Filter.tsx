@@ -12,6 +12,7 @@ interface IFilterProps {
 
 export const Filter: React.FC<IFilterProps> = ({ visible, onCloseModal }) => {
   const [search, setSearch] = useState<string>("");
+  const [motor, setMotor] = useState<string>("");
   return (
     <View style={styles.container}>
       <Modal
@@ -69,15 +70,126 @@ export const Filter: React.FC<IFilterProps> = ({ visible, onCloseModal }) => {
               />
               <CustomInput
                 placeholder='Select'
-                value={search}
-                onChangeText={(value) => setSearch(value)}
+                value={motor}
+                onChangeText={(value) => setMotor(value)}
                 type='dropdown'
                 style={styles.input}
                 textInputStyle={styles.textInputStyle}
                 dropDownItems={["Toyota", "Nissan", "Honda"]}
-                onSelectDropDownItem={(value) => setSearch(value)}
+                onSelectDropDownItem={(value) => setMotor(value)}
               />
+              <View style={styles.priceContainer}>
+                <CustomText type='Medium' size={14} textBlack>
+                  Price
+                </CustomText>
+                <View style={styles.priceInputContainer}>
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.leftInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.rightInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                </View>
+              </View>
+              {/* year */}
+              <View style={styles.priceContainer}>
+                <CustomText type='Medium' size={14} textBlack>
+                  Year
+                </CustomText>
+                <View style={styles.priceInputContainer}>
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.leftInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.rightInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                </View>
+              </View>
+              {/* millage */}
+              <View style={styles.priceContainer}>
+                <CustomText type='Medium' size={14} textBlack>
+                  Price
+                </CustomText>
+                <View style={styles.priceInputContainer}>
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.leftInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                  <CustomInput
+                    placeholder='Select'
+                    value={motor}
+                    onChangeText={(value) => setMotor(value)}
+                    type='dropdown'
+                    style={styles.rightInput}
+                    textInputStyle={{
+                      width: "70%",
+                    }}
+                    dropDownItems={["Toyota", "Nissan", "Honda"]}
+                    onSelectDropDownItem={(value) => setMotor(value)}
+                  />
+                </View>
+              </View>
             </View>
+            <CustomButton
+              title='Search Cars'
+              bgRed
+              textWhite
+              textType='Regular'
+              textSize={14}
+              onPress={() => {}}
+              style={{
+                paddingVertical: moderateScale(5),
+                width: "35%",
+                borderRadius: moderateScale(5),
+                marginVertical: moderateScale(10),
+                alignSelf: "flex-end",
+              }}
+              buttonType='Solid'
+            />
           </View>
         </View>
       </Modal>
@@ -109,6 +221,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(10),
     paddingVertical: moderateScale(5),
     paddingHorizontal: moderateScale(5),
+    width: "100%",
   },
   input: {
     backgroundColor: "transparent",
@@ -117,5 +230,24 @@ const styles = StyleSheet.create({
   },
   textInputStyle: {
     color: colors.black,
+  },
+  priceContainer: {
+    marginTop: moderateScale(10),
+  },
+  priceInputContainer: {
+    flexDirection: "row",
+    overflow: "hidden",
+    marginTop: moderateScale(-20),
+  },
+  leftInput: {
+    width: "68%",
+    backgroundColor: colors.white,
+    borderWidth: 0,
+  },
+  rightInput: {
+    width: "72%",
+    marginLeft: moderateScale(-25),
+    backgroundColor: colors.white,
+    borderWidth: 0,
   },
 });
